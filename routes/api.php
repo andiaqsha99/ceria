@@ -15,6 +15,8 @@ use App\Http\Controllers\SubtemaController;
 use App\Http\Controllers\TemaIndicatorController;
 use App\Http\Controllers\RaportController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\FolderController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,3 +118,17 @@ Route::post('bulletin/approval', [BulletinController::class, 'approval']);
 Route::get('bulletin/approval', [BulletinController::class, 'notApproved']);
 Route::get('bulletin/{username}/approval/notif', [BulletinController::class, 'notifApproved']);
 Route::delete('bulletin/{id?}', [BulletinController::class, 'destroy']);
+
+Route::post('folder/store', [FolderController::class, 'store']);
+Route::get('folder', [FolderController::class, 'index']);
+Route::get('folder/{id?}', [FolderController::class, 'show']);
+Route::post('folder/update', [FolderController::class, 'update']);
+Route::delete('folder/{id?}', [FolderController::class, 'destroy']);
+
+Route::post('file/store', [FileController::class, 'store']);
+Route::get('file', [FileController::class, 'index']);
+Route::get('file/{id?}', [FileController::class, 'show']);
+Route::post('file/update', [FileController::class, 'update']);
+Route::post('file/delete', [FileController::class, 'deleteMultiple']);
+Route::delete('file/{id?}', [FileController::class, 'destroy']);
+Route::get('folder/{id?}/file', [FileController::class, 'getFileByFolderId']);

@@ -107,6 +107,16 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Raport\RaportRepositoryInterface',
             'App\Repositories\Raport\RaportRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\File\FileRepositoryInterface',
+            'App\Repositories\File\FileRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\Folder\FolderRepositoryInterface',
+            'App\Repositories\Folder\FolderRepository'
+        );
     }
 
     /**

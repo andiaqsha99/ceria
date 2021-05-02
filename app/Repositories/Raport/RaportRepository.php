@@ -53,4 +53,9 @@ class RaportRepository implements RaportRepositoryInterface {
     {
         return Raport::select('date_created')->where('nis', $nis)->distinct()->get();
     }
+
+    public function getRaportByNisAndDate($nis, $date)
+    {
+        return Raport::where('nis', $nis)->where('date_created', $date)->get();
+    }
 }

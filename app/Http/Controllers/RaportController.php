@@ -124,4 +124,22 @@ class RaportController extends Controller
     		], 401);
     	}
     }
+
+    public function getRaportByNisAndDate($nis, $date) {
+        $raport = $this->raportService->getRaportByNisAndDate($nis, $date);
+
+    	if($raport) {
+    		return response()->json([
+    			'success' => true,
+    			'message' => 'List raport '. $nis. ' in '. $date,
+    			'data' => $raport
+    		], 200);
+    	} else {
+    		return response()->json([
+    			'success' => false,
+    			'message' => 'raport with nis '.$nis.' not found',
+    			'data' => ''
+    		], 401);
+    	}
+    }
 }

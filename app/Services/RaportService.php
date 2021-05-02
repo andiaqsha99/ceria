@@ -39,4 +39,8 @@ class RaportService {
     public function getRaportDateByNis($nis){
         return $this->raportRepository->getRaportDateByNis($nis);
     }
+
+    public function getRaportByNisAndDate($nis, $date) {
+        return $this->raportRepository->getRaportByNisAndDate($nis, $date);
+    }
 }

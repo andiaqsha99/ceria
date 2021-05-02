@@ -33,6 +33,6 @@ class SubtemaService {
     }
 
     public function getSubtemaByTema($id) {
-        return $this->subtemaRepository->getSubtemaById($id);
+        return $this->subtemaRepository->getSubtemaByTema($id);
     }
 }

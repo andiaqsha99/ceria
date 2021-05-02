@@ -109,6 +109,7 @@ Route::get('raport/{id?}', [RaportController::class, 'show']);
 Route::post('raport/update', [RaportController::class, 'update']);
 Route::delete('raport/{id?}', [RaportController::class, 'destroy']);
 Route::get('raport/nis/{nis?}', [RaportController::class, 'getRaportByNis']);
+Route::get('raport/nis/{nis?}/date', [RaportController::class, 'getDateRaportByNis']);
 
 Route::post('bulletin/store', [BulletinController::class, 'store']);
 Route::get('bulletin', [BulletinController::class, 'index']);

@@ -27,7 +27,10 @@ class BulletinController extends Controller
                 'id' => $bulletin->id,
                 'title' => $bulletin->title,
                 'thumbnail' => $bulletin->thumbnail,
-                'isApproved' => $bulletin->isApproved
+                'isApproved' => $bulletin->isApproved,
+                'content' => $bulletin->content,
+                'user_update' => $bulletin->user_update,
+                'submit_date' => $bulletin->update_date
             );
         }
 

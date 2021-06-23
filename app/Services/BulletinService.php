@@ -44,7 +44,7 @@ class BulletinService {
     }
 
     public function getNotAprovedBulletin() {
-        return $this->bulletinRepository->getAllBulletinByApproved('0');
+        return $this->bulletinRepository->getAllBulletinByApproved(0);
     }
 
     public function getBulletinByUsername($user_update) {

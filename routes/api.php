@@ -117,7 +117,7 @@ Route::get('bulletin', [BulletinController::class, 'index']);
 Route::get('bulletin/{id?}', [BulletinController::class, 'show']);
 Route::post('bulletin/update', [BulletinController::class, 'update']);
 Route::post('bulletin/approval', [BulletinController::class, 'approval']);
-Route::get('bulletin/approval', [BulletinController::class, 'notApproved']);
+Route::get('bulletin/list/notApproval', [BulletinController::class, 'notApproved']);
 Route::get('bulletin/{username}/approval/notif', [BulletinController::class, 'notifApproved']);
 Route::delete('bulletin/{id?}', [BulletinController::class, 'destroy']);
 

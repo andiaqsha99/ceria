@@ -30,7 +30,9 @@ class KelasRepository implements KelasRepositoryInterface {
 			'status' => $data->status,
             'nomor_pegawai' => $data->nomor_pegawai,
             'foto' => $path,
-            'deskripsi' => $data->deskripsi
+            'deskripsi' => $data->deskripsi,
+            'periode_awal' => $data->periode_awal,
+            'periode_akhir'=> $data->periode_akhir
 		]);
     }
 

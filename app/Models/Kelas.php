@@ -19,7 +19,9 @@ class Kelas extends Model
     	'status',
         'nomor_pegawai',
         'foto',
-        'deskripsi'
+        'deskripsi',
+        'periode_awal',
+        'periode_akhir'
     ];
 
     public function teacher() {

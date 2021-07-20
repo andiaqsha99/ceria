@@ -16,7 +16,8 @@ class Attendance extends Model
         'id_class',
         'nomor_induk',
         'tanggal',
-        'status_kehadiran'
+        'status_kehadiran',
+        'deskripsi'
     ];
 
     public function child() {

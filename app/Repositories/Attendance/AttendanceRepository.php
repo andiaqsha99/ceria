@@ -22,7 +22,8 @@ class AttendanceRepository implements AttendanceRepositoryInterface {
             'id_class' => $data->id_class,
             'nomor_induk' => $data->nomor_induk,
             'tanggal' => $data->tanggal,
-            'status_kehadiran' => $data->status_kehadiran
+            'status_kehadiran' => $data->status_kehadiran,
+            'deskripsi' => $data->deskripsi
         ]);
     }
 
@@ -32,7 +33,8 @@ class AttendanceRepository implements AttendanceRepositoryInterface {
             'id_class' => $data->id_class,
             'nomor_induk' => $data->nomor_induk,
             'tanggal' => $data->tanggal,
-            'status_kehadiran' => $data->status_kehadiran
+            'status_kehadiran' => $data->status_kehadiran,
+            'deskripsi' => $data->deskripsi
         ]);
     }
 
@@ -41,5 +43,10 @@ class AttendanceRepository implements AttendanceRepositoryInterface {
         $attendance = Attendance::find($id);
         $attendance->delete();
         return $attendance;
+    }
+
+    public function getAttendanceByParent($nip, $classId)
+    {
+        return Attendance::where('nomor_induk', $nip)->where('id_class', $classId)->get();
     }
 }

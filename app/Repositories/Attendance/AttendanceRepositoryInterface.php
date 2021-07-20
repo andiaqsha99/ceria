@@ -8,4 +8,5 @@ interface AttendanceRepositoryInterface {
     public function createAttendance($data);
     public function updateAttendance($data);
     public function deleteAttendanceById($id);
+    public function getAttendanceByParent($nip, $classId);
 }

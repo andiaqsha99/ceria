@@ -21,6 +21,10 @@ class AttendanceService {
         return $this->attendanceRepository->getAttendanceById($id);
     }
 
+    public function getAttendanceByParent($nip, $classId) {
+        return $this->attendanceRepository->getAttendanceByParent($nip, $classId);
+    }
+
     public function createAttendance(Request $request) {
         return $this->attendanceRepository->createAttendance($request);
     }

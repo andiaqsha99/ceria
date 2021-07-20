@@ -102,39 +102,40 @@ class AttendanceController extends Controller
 			$diffDays = ($requestedDate - $periode_awal)/86400;
 		}
 
-		var_dump($attendance);
-		die();
+		// var_dump($attendance);
+		// die();
 
-		function beforeDays($var)
-		{
-			return strtotime($var->tanggal) < strtotime($var->date);
-		}
+		// function beforeDays($var)
+		// {
+		// 	return strtotime($var->tanggal) < strtotime($var->date);
+		// }
 
-		function notPresent($var)
-		{
-			return strtolower($var->status_kehadiran) != "hadir";
-		}
+		// function notPresent($var)
+		// {
+		// 	return strtolower($var->status_kehadiran) != "hadir";
+		// }
 
-		$currentAttendance = array_filter($attendance,"beforeDays");
-		$countNotPresentAttendance = count(array_filter($currentAttendance, "notPresent"));
+		// $currentAttendance = array_filter($attendance,"beforeDays");
+		// $countNotPresentAttendance = count(array_filter($currentAttendance, "notPresent"));
 		
-		$notPresentPersentage = 0;
-		$presentPersentage = 100;
-		if($countNotPresentAttendance > 0 && $countNotPresentAttendance < $diffDays){
-			$notPresentPersentage = ($countNotPresentAttendance / $diffDays)*100;
-			$presentPersentage = ($diffDays - $countNotPresentAttendance)/$diffDays*100;
-		}
+		// $notPresentPersentage = 0;
+		// $presentPersentage = 100;
+		// if($countNotPresentAttendance > 0 && $countNotPresentAttendance < $diffDays){
+		// 	$notPresentPersentage = ($countNotPresentAttendance / $diffDays)*100;
+		// 	$presentPersentage = ($diffDays - $countNotPresentAttendance)/$diffDays*100;
+		// }
 
 
 		if ($attendance && $kelasStartDate) {
     		return response()->json([
     			'success' => true,
     			'message' => 'Detail Kehadiran',
-				'data' => [
-					'total_hari' =>$diffDays,
-					'hadir'=>$presentPersentage,
-					'tidak_hadir'=>$notPresentPersentage
-				]
+				'data'=>$attendance
+				// 'data' => [
+				// 	'total_hari' =>$diffDays,
+				// 	'hadir'=>$presentPersentage,
+				// 	'tidak_hadir'=>$notPresentPersentage
+				// ]
     		], 200);
     	} else {
     		return response()->json([

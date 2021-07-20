@@ -124,8 +124,8 @@ class AttendanceController extends Controller
 			);
 		}
 
-		$currentAttendance = array_filter($attendanceArray,"beforeDays");
-		$countNotPresentAttendance = count(array_filter($currentAttendance, "notPresent"));
+		$currentAttendance = array_filter($attendanceArray,array($this,"beforeDays"));
+		$countNotPresentAttendance = count(array_filter($currentAttendance, array($this,"notPresent")));
 		
 		$notPresentPersentage = 0;
 		$presentPersentage = 100;

@@ -94,7 +94,7 @@ class AttendanceController extends Controller
 
 	public function getParentAttendance($nip, $id_class, $date){
 		$kelasStartDate = $this->kelasService->getKelasById($id_class)->periode_awal;
-		$attendance = $this->attendanceService->getAttendanceByParent($nip, $id_class);
+		$attendances = $this->attendanceService->getAttendanceByParent($nip, $id_class);
 		$periode_awal = strtotime($kelasStartDate);
 		$requestedDate = strtotime($date);
 		$diffDays = 1;
@@ -102,40 +102,50 @@ class AttendanceController extends Controller
 			$diffDays = ($requestedDate - $periode_awal)/86400;
 		}
 
-		// var_dump($attendance);
-		// die();
+		$attendanceArray = array();
+		foreach ($attendances as $attendance) {
+			$attendanceArray[] = array(
+			'id'=>$attendance->id,
+			'deskripsi'=>$attendance->deskripsi,
+			'id_class' =>$attendance->id_class,
+			'nomor_induk'=>$attendance->nomor_induk,
+			'tanggal'=>$attendance->tanggal,
+			'status_kehadiran'=>$attendance->status_kehadiran,
+			);
+		}
 
-		// function beforeDays($var)
-		// {
-		// 	return strtotime($var->tanggal) < strtotime($var->date);
-		// }
 
-		// function notPresent($var)
-		// {
-		// 	return strtolower($var->status_kehadiran) != "hadir";
-		// }
+		function beforeDays($var)
+		{
+			return strtotime($var->tanggal) < strtotime($var->date);
+		}
 
-		// $currentAttendance = array_filter($attendance,"beforeDays");
-		// $countNotPresentAttendance = count(array_filter($currentAttendance, "notPresent"));
+		function notPresent($var)
+		{
+			return strtolower($var->status_kehadiran) != "hadir";
+		}
+
+		$currentAttendance = array_filter($attendanceArray,"beforeDays");
+		$countNotPresentAttendance = count(array_filter($currentAttendance, "notPresent"));
 		
-		// $notPresentPersentage = 0;
-		// $presentPersentage = 100;
-		// if($countNotPresentAttendance > 0 && $countNotPresentAttendance < $diffDays){
-		// 	$notPresentPersentage = ($countNotPresentAttendance / $diffDays)*100;
-		// 	$presentPersentage = ($diffDays - $countNotPresentAttendance)/$diffDays*100;
-		// }
+		$notPresentPersentage = 0;
+		$presentPersentage = 100;
+		if($countNotPresentAttendance > 0 && $countNotPresentAttendance < $diffDays){
+			$notPresentPersentage = ($countNotPresentAttendance / $diffDays)*100;
+			$presentPersentage = ($diffDays - $countNotPresentAttendance)/$diffDays*100;
+		}
 
 
 		if ($attendance && $kelasStartDate) {
     		return response()->json([
     			'success' => true,
     			'message' => 'Detail Kehadiran',
-				'data'=>$attendance
-				// 'data' => [
-				// 	'total_hari' =>$diffDays,
-				// 	'hadir'=>$presentPersentage,
-				// 	'tidak_hadir'=>$notPresentPersentage
-				// ]
+				// 'data'=>$attendance
+				'data' => [
+					'total_hari' =>$diffDays,
+					'hadir'=>$presentPersentage,
+					'tidak_hadir'=>$notPresentPersentage
+				]
     		], 200);
     	} else {
     		return response()->json([

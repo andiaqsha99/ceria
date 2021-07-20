@@ -109,7 +109,7 @@ class AttendanceController extends Controller
 		$requestedDate = strtotime($date);
 		$diffDays = 1;
 		if($requestedDate > $periode_awal){
-			$diffDays = ($requestedDate - $periode_awal)/86400;
+			$diffDays = ($requestedDate - $periode_awal)/86400 + 1;
 		}
 
 		$attendanceArray = array();

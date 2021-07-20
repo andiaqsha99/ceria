@@ -94,7 +94,7 @@ class AttendanceController extends Controller
 
 	function beforeDays($var)
 	{
-		return strtotime($var['tanggal']) < strtotime($var['tanggal_akhir']);
+		return strtotime($var['tanggal']) <= strtotime($var['tanggal_akhir']);
 	}
 
 	function notPresent($var)

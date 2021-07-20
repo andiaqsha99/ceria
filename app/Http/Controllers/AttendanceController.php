@@ -92,6 +92,16 @@ class AttendanceController extends Controller
     	}
     }
 
+	function beforeDays($var)
+	{
+		return strtotime($var->tanggal) < strtotime($var->date);
+	}
+
+	function notPresent($var)
+	{
+		return strtolower($var->status_kehadiran) != "hadir";
+	}
+
 	public function getParentAttendance($nip, $id_class, $date){
 		$kelasStartDate = $this->kelasService->getKelasById($id_class)->periode_awal;
 		$attendances = $this->attendanceService->getAttendanceByParent($nip, $id_class);
@@ -112,17 +122,6 @@ class AttendanceController extends Controller
 			'tanggal'=>$attendance->tanggal,
 			'status_kehadiran'=>$attendance->status_kehadiran,
 			);
-		}
-
-
-		function beforeDays($var)
-		{
-			return strtotime($var->tanggal) < strtotime($var->date);
-		}
-
-		function notPresent($var)
-		{
-			return strtolower($var->status_kehadiran) != "hadir";
 		}
 
 		$currentAttendance = array_filter($attendanceArray,"beforeDays");

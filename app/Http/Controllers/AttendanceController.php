@@ -102,6 +102,9 @@ class AttendanceController extends Controller
 			$diffDays = ($requestedDate - $periode_awal)/86400;
 		}
 
+		var_dump($attendance);
+		die();
+
 		function beforeDays($var)
 		{
 			return strtotime($var->tanggal) < strtotime($var->date);

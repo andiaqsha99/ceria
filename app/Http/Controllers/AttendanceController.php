@@ -14,6 +14,7 @@ class AttendanceController extends Controller
     public function __construct(AttendanceService $attendanceService, KelasService $kelasService)
     {
         $this->attendanceService = $attendanceService;
+		$this->kelasService = $kelasService;
     }
 
     public function index() {
@@ -92,7 +93,7 @@ class AttendanceController extends Controller
     }
 
 	public function getParentAttendance($nip, $id_class, $date){
-		$kelasStartDate = $this->kelasService-> getKelasById($id_class)->periode_awal;
+		$kelasStartDate = $this->kelasService->getKelasById($id_class)->periode_awal;
 		$attendance = $this->attendanceService->getAttendanceByParent($nip, $id_class);
 		$periode_awal = strtotime($kelasStartDate);
 		$requestedDate = strtotime($date);

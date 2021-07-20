@@ -130,7 +130,7 @@ class AttendanceController extends Controller
 		
 		$notPresentPersentage = 0;
 		$presentPersentage = 100;
-		if($countNotPresentAttendance > 0 && $countNotPresentAttendance < $diffDays){
+		if($countNotPresentAttendance > 0 && $countNotPresentAttendance <= $diffDays){
 			$notPresentPersentage = ($countNotPresentAttendance / $diffDays)*100;
 			$presentPersentage = ($diffDays - $countNotPresentAttendance)/$diffDays*100;
 		}

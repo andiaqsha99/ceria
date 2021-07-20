@@ -94,12 +94,12 @@ class AttendanceController extends Controller
 
 	function beforeDays($var)
 	{
-		return strtotime($var->tanggal) < strtotime($var->date);
+		return strtotime($var['tanggal']) < strtotime($var['tanggal_akhir']);
 	}
 
 	function notPresent($var)
 	{
-		return strtolower($var->status_kehadiran) != "hadir";
+		return strtolower($var['status_kehadiran']) != "hadir";
 	}
 
 	public function getParentAttendance($nip, $id_class, $date){
@@ -121,6 +121,7 @@ class AttendanceController extends Controller
 			'nomor_induk'=>$attendance->nomor_induk,
 			'tanggal'=>$attendance->tanggal,
 			'status_kehadiran'=>$attendance->status_kehadiran,
+			'tanggal_akhir'=>$date
 			);
 		}
 

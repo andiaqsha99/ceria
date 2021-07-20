@@ -82,7 +82,7 @@ Route::post('discussion/{id}/update', [DiscussionController::class, 'update']);
 Route::delete('discussion/{id?}', [DiscussionController::class, 'destroy']);
 
 Route::post('attendance/store', [AttendanceController::class, 'store']);
-Route::post('attendance/{nip}/class/{id_class}/date/{date}', [AttendanceController::class, 'getParentAttendance']);
+Route::get('attendance/{nip}/class/{id_class}/date/{date}', [AttendanceController::class, 'getParentAttendance']);
 
 Route::post('tema/store', [TemaController::class, 'store']);
 Route::get('tema', [TemaController::class, 'index']);

@@ -10,5 +10,5 @@ interface ChildRepositoryInterface {
     public function deleteChildById($id);
     public function getChildByParentId($id);
     public function getChildByClassId($id);
-    public function updateToken($data)
+    public function updateToken($data);
 }

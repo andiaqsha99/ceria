@@ -39,7 +39,7 @@ class ChildRepository implements ChildRepositoryInterface {
 
     public function updateToken($data)
     {
-        return Child::where($data->nik_parent)->update([
+        return Child::where('nik_parent', $data->nik_parent)->update([
             'notification_token' => $data->notification_token,
         ]);
     }

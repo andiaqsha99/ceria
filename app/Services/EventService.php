@@ -22,7 +22,7 @@ class EventService {
     }
 
     public function createEvent(Request $request) {
-        return $this->eventRepository->create($request);
+        return $this->eventRepository->store($request);
     }
 
     public function updateEvent(Request $request) {

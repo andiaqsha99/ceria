@@ -32,7 +32,8 @@ class ChildRepository implements ChildRepositoryInterface {
             'nomor_induk' => $data->nomor_induk,
             'nik_parent' => $data->nik_parent,
             'id_kelas' => $data->id_kelas,
-            'nama' => $data->nama
+            'nama' => $data->nama,
+            'notification_token'=>$data->notification_token
         ]);
     }
 

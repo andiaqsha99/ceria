@@ -75,17 +75,18 @@ class ChildController extends Controller
 
 	public function updateToken(Request $request) {
 		$child = $this->childService->updateToken($request);
-		if ($child) {
-			return response()->json([
-				'success' => true,
-				'message' => 'Token berhasil diupdate',
-			], 200);
-		} else {
-			return response()->json([
-				'success' => false,
-				'message' => 'Token gagal diupdate',
-			], 401);
-		}
+		var_dump($child);
+		// if ($child) {
+		// 	return response()->json([
+		// 		'success' => true,
+		// 		'message' => 'Token berhasil diupdate',
+		// 	], 200);
+		// } else {
+		// 	return response()->json([
+		// 		'success' => false,
+		// 		'message' => 'Token gagal diupdate',
+		// 	], 401);
+		// }
     }
 
     public function destroy($id) {

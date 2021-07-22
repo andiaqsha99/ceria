@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ChildService;
 use Illuminate\Http\Request;
 use App\Services\EventService;
+use GuzzleHttp\Client;
 
 class EventController extends Controller
 {
     protected $eventService;
+	protected $childService;
 
-    public function __construct(EventService $eventService)
+    public function __construct(EventService $eventService, ChildService $childService)
     {
         $this->eventService = $eventService;
+		$this->childService = $childService;
     }
 
     public function index() {
@@ -25,6 +29,36 @@ class EventController extends Controller
 
     public function store(Request $request) {
 		$event = $this->eventService->createEvent($request);
+		$childs = $this->childService->getChildByClassId($request->id_class);
+		$client = new Client();
+		$notificationResult = [];
+
+		foreach ($childs as  $child) {
+			$token = "";
+			if($child->notification_token != NULL){
+				$token = $child->notification_token;
+			}
+			$notificationBody = [
+				'notification'=>[
+					'title' => $request->name,
+					'body'=> $request->description,
+					'data'=> [
+						'date'=>$request->date,
+						'location'=>$request->location
+					]
+				],
+				'to'=> $token
+			];
+
+			$result = $client->request('POST', 'https://fcm.googleapis.com/fcm/send', [
+				'headers' => [
+					'Accept' => 'application/json',
+					'Authorization' => 'key=AAAARFI6TRs:APA91bF80dEn_hp0z5MNLveaEGfA04T3Jp0KkiJmj0yjqVn2pqFyBwYbIK8PIRqGdC4THiY-atFr_VwKO4fbwZuG5Jh7uF7riAAImut9d9yhSZO9_EDeLWzLjZZNurbwPA7rfKoeCJDY'
+				],
+				'body' => $notificationBody
+			]);
+			$notificationResult[]=$result->getStatusCode();
+		}
 
 		if ($event) {
 			return response()->json([

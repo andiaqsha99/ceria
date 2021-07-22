@@ -39,4 +39,8 @@ class ChildService {
     public function getChildByClassId($id) {
         return $this->childRepository->getChildByClassId($id);
     }
+
+    public function updateToken(Request $request){
+        return $this->childRepository->updateToken($request);
+    }
 }

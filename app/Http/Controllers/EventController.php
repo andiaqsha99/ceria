@@ -55,7 +55,7 @@ class EventController extends Controller
 					'Accept' => 'application/json',
 					'Authorization' => 'key=AAAARFI6TRs:APA91bF80dEn_hp0z5MNLveaEGfA04T3Jp0KkiJmj0yjqVn2pqFyBwYbIK8PIRqGdC4THiY-atFr_VwKO4fbwZuG5Jh7uF7riAAImut9d9yhSZO9_EDeLWzLjZZNurbwPA7rfKoeCJDY'
 				],
-				'body' => $notificationBody
+				'json' => $notificationBody
 			]);
 			$notificationResult[]=$result->getStatusCode();
 		}

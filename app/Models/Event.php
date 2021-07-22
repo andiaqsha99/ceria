@@ -14,11 +14,14 @@ class Event extends Model
     protected $fillable = [
         'id',
         'name',
+        'id_class',
         'description',
-        'location'
+        'location',
+        'date'
+
     ];
 
-    public function eventKelas() {
-        $this->hasMany('App\Models\KelasEvent', 'id_event');
+    public function kelas() {
+        $this->belongsTo('App\Models\Kelas', 'id_class');
     }
 }

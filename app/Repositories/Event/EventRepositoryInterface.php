@@ -3,9 +3,9 @@
 namespace App\Repositories\Event;
 
 interface EventRepositoryInterface {
-    public function getAllEvents();
-    public function getEventById($id);
-    public function createEvent($data);
-    public function updateEvent($data);
-    public function deleteEventById($id);
+    public function index();
+    public function show($id);
+    public function store($data);
+    public function update($data);
+    public function destroy($id);
 }

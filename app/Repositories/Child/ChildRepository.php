@@ -36,6 +36,13 @@ class ChildRepository implements ChildRepositoryInterface {
         ]);
     }
 
+    public function updateToken($data)
+    {
+        return Child::find($data->nik_parent)->update([
+            'notification_token' => $data->notification_token,
+        ]);
+    }
+
     public function deleteChildById($id)
     {
         $child = Child::find($id);

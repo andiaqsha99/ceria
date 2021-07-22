@@ -18,7 +18,8 @@ class Child extends Model
     	'nomor_induk',
     	'nik_parent',
     	'id_kelas',
-    	'nama'
+    	'nama',
+        'notification_token'
     ];
 
     public function parents() {

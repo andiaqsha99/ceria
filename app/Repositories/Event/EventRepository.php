@@ -3,39 +3,49 @@ namespace App\Repositories\Event;
 
 use App\Models\Event;
 use App\Repositories\Event\EventRepositoryInterface;
+use GuzzleHttp\Client;
 
 class EventRepository implements EventRepositoryInterface {
 
-    public function getAllEvents()
+    public function index()
     {
         return Event::all();
     }
 
-    public function getEventById($id)
+    public function show($id)
     {
         return Event::find($id);
     }
 
-    public function createEvent($data)
+    public function store($data)
     {
         return Event::create([
             'name' => $data->name,
+            'id_class'=>$data->id_class,
             'description' => $data->description,
-            'location' => $data->location
+            'location' => $data->location,
+            'date' => $data->date
         ]);
     }
 
-    public function updateEvent($data)
+    public function update($data)
     {
         return Event::find($data->id)->update([
             'name' => $data->name,
+            'id_class'=>$data->id_class,
             'description' => $data->description,
-            'location' => $data->location
+            'location' => $data->location,
+            'date' => $data->date
         ]);
     }
 
-    public function deleteEventById($id)
+    public function destroy($id)
     {
         return $event = Event::find($id)->delete();
+    }
+
+    public function getEventsByClassId($id)
+    {
+        return Event::where('id_class', $id)->get();
     }
 }

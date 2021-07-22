@@ -15,6 +15,7 @@ use App\Http\Controllers\SubtemaController;
 use App\Http\Controllers\TemaIndicatorController;
 use App\Http\Controllers\RaportController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\FileController;
 
@@ -67,6 +68,7 @@ Route::get('child', [ChildController::class, 'index']);
 Route::get('child/{id?}', [ChildController::class, 'show']);
 Route::get('child/parent/{id?}', [ChildController::class, 'getChildByParentId']);
 Route::post('child/update', [ChildController::class, 'update']);
+Route::post('child/updateToken', [ChildController::class, 'updateToken']);
 Route::delete('child/{id?}', [ChildController::class, 'destroy']);
 
 Route::post('kelas/store', [KelasController::class, 'store']);
@@ -135,3 +137,9 @@ Route::post('file/update', [FileController::class, 'update']);
 Route::post('file/delete', [FileController::class, 'deleteMultiple']);
 Route::delete('file/{id?}', [FileController::class, 'destroy']);
 Route::get('folder/{id?}/file', [FileController::class, 'getFileByFolderId']);
+
+Route::post('event/store', [EventController::class, 'store']);
+Route::get('event', [EventController::class, 'index']);
+Route::get('event/{id?}', [EventController::class, 'show']);
+Route::post('event/update', [EventController::class, 'update']);
+Route::delete('event/{id?}', [EventController::class, 'destroy']);

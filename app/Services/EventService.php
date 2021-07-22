@@ -14,22 +14,22 @@ class EventService {
     }
 
     public function getAllEvents() {
-        return $this->eventRepository->getAllEvents();
+        return $this->eventRepository->index();
     }
 
     public function getEventById($id) {
-        return $this->eventRepository->getEventById($id);
+        return $this->eventRepository->show($id);
     }
 
     public function createEvent(Request $request) {
-        return $this->eventRepository->createEvent($request);
+        return $this->eventRepository->create($request);
     }
 
     public function updateEvent(Request $request) {
-        return $this->eventRepository->updateEvent($request);
+        return $this->eventRepository->update($request);
     }
 
     public function deleteEventById($id) {
-        return $this->eventRepository->deleteEventById($id);
+        return $this->eventRepository->destroy($id);
     }
 }

@@ -136,7 +136,7 @@ class AttendanceController extends Controller
 		}
 
 
-		if ($attendance && $kelasStartDate) {
+		if ($attendances && $kelasStartDate) {
     		return response()->json([
     			'success' => true,
     			'message' => 'Detail Kehadiran',

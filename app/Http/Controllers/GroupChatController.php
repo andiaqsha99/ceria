@@ -48,16 +48,16 @@ class GroupChatController extends Controller
 				$token = $child->notification_token;
 			}
 			$notificationBody = [
-				'notification'=>[
-					'title' => $request->name,
-					'body'=> $request->description,
-				],
-				'data'=> [
-					'date'=>$request->date,
-					'location'=>$request->location
-				],
-				'to'=> $token
-			];
+                'notification'=>[
+                    'title' => $request->name,
+                    'body'=> $request->text,
+                ],
+                'data'=> [
+                    'id_sender'=>$request->id_sender,
+                    'date'=>$request->date
+                ],
+                'to'=> $token
+            ];
 
 			$result = $client->request('POST', 'https://fcm.googleapis.com/fcm/send', [
 				'headers' => [

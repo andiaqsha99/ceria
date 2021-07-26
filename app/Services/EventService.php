@@ -21,6 +21,10 @@ class EventService {
         return $this->eventRepository->show($id);
     }
 
+    public function getEventsClassId($id) {
+        return $this->eventRepository->getEventsByClassId($id);
+    }
+
     public function createEvent(Request $request) {
         return $this->eventRepository->store($request);
     }

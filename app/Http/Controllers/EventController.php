@@ -91,6 +91,24 @@ class EventController extends Controller
     	}
     }
 
+	public function getEventsClassId($id) {
+    	$events = $this->eventService->getEventsClassId($id);
+
+    	if($events) {
+    		return response()->json([
+    			'success' => true,
+    			'message' => 'List Event',
+    			'data' => $events
+    		], 200);
+    	} else {
+    		return response()->json([
+    			'success' => false,
+    			'message' => 'Event with class id '.$id.' not found',
+    			'data' => ''
+    		], 401);
+    	}
+    }
+
     public function update(Request $request) {
 		$event = $this->eventService->updateEvent($request);
 

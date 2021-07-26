@@ -143,5 +143,7 @@ Route::get('event', [EventController::class, 'index']);
 Route::get('event/{id?}', [EventController::class, 'show']);
 Route::post('event/update', [EventController::class, 'update']);
 Route::delete('event/{id?}', [EventController::class, 'destroy']);
+Route::get('event/class/{id?}', [EventController::class, 'getEventsByClassId']);
+
 
 ?>

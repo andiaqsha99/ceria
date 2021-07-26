@@ -42,10 +42,10 @@ class EventController extends Controller
 				'notification'=>[
 					'title' => $request->name,
 					'body'=> $request->description,
-					'data'=> [
-						'date'=>$request->date,
-						'location'=>$request->location
-					]
+				],
+				'data'=> [
+					'date'=>$request->date,
+					'location'=>$request->location
 				],
 				'to'=> $token
 			];

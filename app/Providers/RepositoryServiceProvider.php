@@ -117,6 +117,11 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Folder\FolderRepositoryInterface',
             'App\Repositories\Folder\FolderRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\GroupChat\GroupChatRepositoryInterface',
+            'App\Repositories\GroupChat\GroupChatRepository'
+        );
     }
 
     /**

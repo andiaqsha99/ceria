@@ -49,7 +49,7 @@ Route::get('teacher/{nik?}', [TeacherController::class, 'show']);
 Route::post('teacher/update', [TeacherController::class, 'update']);
 Route::delete('teacher/{nik?}', [TeacherController::class, 'destroy']);
 Route::post('teacher/login', [TeacherController::class, 'login']);
-Route::post('teacher/updateToken', [ChildController::class, 'updateToken']);
+Route::post('teacher/updateToken', [TeacherController::class, 'updateToken']);
 
 
 Route::post('assignment/store', [AssignmentController::class, 'store']);

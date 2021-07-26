@@ -98,4 +98,19 @@ class TeacherController extends Controller
 			'data' => $status["data"],
 		], 200);
 	}
+
+	public function updateToken(Request $request) {
+		$child = $this->teacherService->updateToken($request);
+		if ($child) {
+			return response()->json([
+				'success' => true,
+				'message' => 'Token berhasil diupdate',
+			], 200);
+		} else {
+			return response()->json([
+				'success' => false,
+				'message' => 'Token gagal diupdate',
+			], 401);
+		}
+    }
 }

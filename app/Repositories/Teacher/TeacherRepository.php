@@ -48,4 +48,11 @@ class TeacherRepository implements TeacherRepositoryInterface {
     {
         return Teacher::where('username', $username)->first();
     }
+
+    public function updateToken($data)
+    {
+        return Teacher::where('nomor_pegawai', $data->nomor_pegawai)->update([
+            'notification_token' => $data->notification_token,
+        ]);
+    }
 }

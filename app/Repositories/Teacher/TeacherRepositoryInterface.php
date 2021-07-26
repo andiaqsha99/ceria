@@ -8,4 +8,5 @@ interface TeacherRepositoryInterface {
     public function updateTeacher($data);
     public function deleteTeacherById($id);
     public function getTeacherByUsername($username);
+    public function updateToken($data);
 }

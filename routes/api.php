@@ -18,6 +18,7 @@ use App\Http\Controllers\BulletinController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\GroupChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,8 @@ Route::get('teacher/{nik?}', [TeacherController::class, 'show']);
 Route::post('teacher/update', [TeacherController::class, 'update']);
 Route::delete('teacher/{nik?}', [TeacherController::class, 'destroy']);
 Route::post('teacher/login', [TeacherController::class, 'login']);
+Route::post('teacher/updateToken', [ChildController::class, 'updateToken']);
+
 
 Route::post('assignment/store', [AssignmentController::class, 'store']);
 Route::get('assignment', [AssignmentController::class, 'index']);
@@ -144,6 +147,13 @@ Route::get('event/{id?}', [EventController::class, 'show']);
 Route::post('event/update', [EventController::class, 'update']);
 Route::delete('event/{id?}', [EventController::class, 'destroy']);
 Route::get('event/class/{id?}', [EventController::class, 'getEventsByClassId']);
+
+Route::post('groupChat/store', [GroupChatController::class, 'store']);
+Route::get('groupChat', [GroupChatController::class, 'index']);
+Route::get('groupChat/{id?}', [GroupChatController::class, 'show']);
+Route::post('groupChat/update', [GroupChatController::class, 'update']);
+Route::delete('groupChat/{id?}', [GroupChatController::class, 'destroy']);
+Route::get('groupChat/class/{id?}', [GroupChatController::class, 'getGroupChatByClassId']);
 
 
 ?>

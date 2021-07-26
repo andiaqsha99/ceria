@@ -51,4 +51,8 @@ class TeacherService {
         }
         return $status;
     }
+
+    public function updateToken(Request $request){
+        return $this->teacherRepository->updateToken($request);
+    }
 }

@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Repositories\GroupChat;
 use App\Repositories\GroupChat\GroupChatRepositoryInterface;
 use App\Models\GroupChat;
 

@@ -59,14 +59,17 @@ class GroupChatController extends Controller
                 'to'=> $token
             ];
 
-			$result = $client->request('POST', 'https://fcm.googleapis.com/fcm/send', [
-				'headers' => [
-					'Accept' => 'application/json',
-					'Authorization' => 'key=AAAARFI6TRs:APA91bF80dEn_hp0z5MNLveaEGfA04T3Jp0KkiJmj0yjqVn2pqFyBwYbIK8PIRqGdC4THiY-atFr_VwKO4fbwZuG5Jh7uF7riAAImut9d9yhSZO9_EDeLWzLjZZNurbwPA7rfKoeCJDY'
-				],
-				'json' => $notificationBody
-			]);
-			$notificationResult[]=$result->getStatusCode();
+            if($request->id_sender != $child->id){
+                $result = $client->request('POST', 'https://fcm.googleapis.com/fcm/send', [
+                    'headers' => [
+                        'Accept' => 'application/json',
+                        'Authorization' => 'key=AAAARFI6TRs:APA91bF80dEn_hp0z5MNLveaEGfA04T3Jp0KkiJmj0yjqVn2pqFyBwYbIK8PIRqGdC4THiY-atFr_VwKO4fbwZuG5Jh7uF7riAAImut9d9yhSZO9_EDeLWzLjZZNurbwPA7rfKoeCJDY'
+                    ],
+                    'json' => $notificationBody
+                ]);
+                $notificationResult[]=$result->getStatusCode();
+            }
+			
 		}
 
         if($teacher){
@@ -83,13 +86,16 @@ class GroupChatController extends Controller
                     ],
                     'to'=> $teacherToken
                 ];
-                $resultTeacher = $client->request('POST', 'https://fcm.googleapis.com/fcm/send', [
-                    'headers' => [
-                        'Accept' => 'application/json',
-                        'Authorization' => 'key=AAAARFI6TRs:APA91bF80dEn_hp0z5MNLveaEGfA04T3Jp0KkiJmj0yjqVn2pqFyBwYbIK8PIRqGdC4THiY-atFr_VwKO4fbwZuG5Jh7uF7riAAImut9d9yhSZO9_EDeLWzLjZZNurbwPA7rfKoeCJDY'
-                    ],
-                    'json' => $notificationBody
-                ]);
+                if($request->id_sender != $teacher->nomor_pegawai){
+                    $resultTeacher = $client->request('POST', 'https://fcm.googleapis.com/fcm/send', [
+                        'headers' => [
+                            'Accept' => 'application/json',
+                            'Authorization' => 'key=AAAARFI6TRs:APA91bF80dEn_hp0z5MNLveaEGfA04T3Jp0KkiJmj0yjqVn2pqFyBwYbIK8PIRqGdC4THiY-atFr_VwKO4fbwZuG5Jh7uF7riAAImut9d9yhSZO9_EDeLWzLjZZNurbwPA7rfKoeCJDY'
+                        ],
+                        'json' => $notificationBody
+                    ]);
+                }
+                
             }   
         }
 

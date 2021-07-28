@@ -113,4 +113,22 @@ class TeacherController extends Controller
 			], 401);
 		}
     }
+
+	public function getByUsername($username) {
+    	$teacher = $this->teacherService->getTeacherByUsername($username);
+
+    	if($teacher) {
+    		return response()->json([
+    			'success' => true,
+    			'message' => 'Detail Teacher',
+    			'data' => $teacher
+    		], 200);
+    	} else {
+    		return response()->json([
+    			'success' => false,
+    			'message' => 'Teacher with nomor pegawai '.$username.' not found',
+    			'data' => ''
+    		], 401);
+    	}
+    }
 }

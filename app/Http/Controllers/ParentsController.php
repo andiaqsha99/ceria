@@ -99,4 +99,22 @@ class ParentsController extends Controller
 			'data' => $status["data"],
 		], 200);
 	}
+
+	public function getByUsername($username) {
+    	$parent = $this->parentsService->getParentByUsername($username);
+
+    	if($parent) {
+    		return response()->json([
+    			'success' => true,
+    			'message' => 'Detail Parent',
+    			'data' => $parent
+    		], 200);
+    	} else {
+    		return response()->json([
+    			'success' => false,
+    			'message' => 'Parent with username '.$username.' not found',
+    			'data' => ''
+    		], 401);
+    	}
+    }
 }

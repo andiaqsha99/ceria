@@ -42,6 +42,7 @@ Route::get('parent/{nik?}', [ParentsController::class, 'show']);
 Route::post('parent/update', [ParentsController::class, 'update']);
 Route::delete('parent/{nik?}', [ParentsController::class, 'destroy']);
 Route::post('parent/login', [ParentsController::class, 'login']);
+Route::get('parent/username/{username?}', [ParentsController::class, 'getByUsername']);
 
 Route::post('teacher/store', [TeacherController::class, 'store']);
 Route::get('teacher', [TeacherController::class, 'index']);
@@ -50,7 +51,7 @@ Route::post('teacher/update', [TeacherController::class, 'update']);
 Route::delete('teacher/{nik?}', [TeacherController::class, 'destroy']);
 Route::post('teacher/login', [TeacherController::class, 'login']);
 Route::post('teacher/updateToken', [TeacherController::class, 'updateToken']);
-
+Route::get('teacher/username/{username?}', [TeacherController::class, 'getByUsername']);
 
 Route::post('assignment/store', [AssignmentController::class, 'store']);
 Route::get('assignment', [AssignmentController::class, 'index']);

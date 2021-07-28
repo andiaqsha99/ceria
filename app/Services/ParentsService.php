@@ -22,6 +22,10 @@ class ParentsService {
         return $this->parentsRepository->getParentById($id);
     }
 
+    public function getParentByUsername($username) {
+        return $this->parentsRepository->getParentByUsername($username);
+    }
+
     public function createParent(Request $request) {
         return $this->parentsRepository->createParent($request);
     }

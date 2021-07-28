@@ -21,6 +21,10 @@ class TeacherService {
         return $this->teacherRepository->getTeacherById($id);
     }
 
+    public function getTeacherByUsername($username) {
+        return $this->teacherRepository->getTeacherByUsername($username);
+    }
+
     public function createTeacher(Request $request) {
         return $this->teacherRepository->createTeacher($request);
     }
